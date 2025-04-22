@@ -1,10 +1,14 @@
 # app.py
+from database import init_db
+init_db()  # 앱 시작 시 DB 초기화
 import streamlit as st
 import sqlite3
 from datetime import datetime, timedelta
 
 # DB 연결
-conn = sqlite3.connect("supercap.db")
+import os
+DB_PATH = os.path.join(os.path.dirname(__file__), "supercap.db")
+conn = sqlite3.connect(DB_PATH)
 
 # 로그인 페이지
 if "user" not in st.session_state:
